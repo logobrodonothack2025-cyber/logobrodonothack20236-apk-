@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, .font-display {
+    font-family: 'Fredoka', 'Plus Jakarta Sans', system-ui, cursive;
+  }
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.rainbow-gradient {
+  background: linear-gradient(135deg, #ff6b6b, #4dd0e1, #ffee58, #69f0ae, #f06292);
+  background-size: 300% 300%;
+  animation: rainbow-shift 8s ease infinite;
+}
+
+.rainbow-text {
+  background: linear-gradient(135deg, #ff6b6b, #4dd0e1, #ffee58, #69f0ae, #f06292);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-shift 6s ease infinite;
+}
+
+.rainbow-border {
+  border-image: linear-gradient(135deg, #ff6b6b, #4dd0e1, #ffee58, #69f0ae, #f06292) 1;
+}

@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "description": "User avatar URL or preset" },
+        "bio": { "type": "string", "description": "Short bio or motto" },
+        "selectedTheme": { "type": "string", "description": "Current Logo Bro skin theme" },
+        "highScore": { "type": "number", "description": "Arcade high score" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of account creation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["uid", "email", "displayName", "createdAt"]
+    },
+    "CustomLogobro": {
+      "title": "CustomLogobro",
+      "description": "Custom Logo Bro character skin designed by user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique design identifier" },
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "authorName": { "type": "string", "description": "Creator display name" },
+        "name": { "type": "string", "description": "Name of custom Logo Bro" },
+        "colors": { "type": "string", "description": "JSON string or comma-separated hex colors" },
+        "mouthStyle": { "type": "string", "description": "Selected mouth shape" },
+        "accessory": { "type": "string", "description": "Accessory type" },
+        "likesCount": { "type": "number", "description": "Number of community likes" },
+        "isPublic": { "type": "boolean", "description": "Whether shared with community" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["id", "userId", "name", "colors", "createdAt"]
+    },
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "Arcade high score entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Score record ID" },
+        "userId": { "type": "string", "description": "User ID who scored" },
+        "displayName": { "type": "string", "description": "Player name" },
+        "score": { "type": "number", "description": "Game score" },
+        "gameMode": { "type": "string", "description": "Arcade game mode" },
+        "characterSkin": { "type": "string", "description": "Skin used during run" },
+        "createdAt": { "type": "string", "description": "Timestamp of record" }
+      },
+      "required": ["id", "userId", "displayName", "score", "gameMode", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile collection partitioned by user ID"
+    },
+    "/users/{userId}/customLogobros/{logobroId}": {
+      "schema": { "$ref": "#/entities/CustomLogobro" },
+      "description": "User's saved custom Logo Bro characters"
+    },
+    "/publicLogobros/{logobroId}": {
+      "schema": { "$ref": "#/entities/CustomLogobro" },
+      "description": "Public community creations showcase"
+    },
+    "/leaderboard/{scoreId}": {
+      "schema": { "$ref": "#/entities/LeaderboardEntry" },
+      "description": "Global arcade high scores"
+    }
+  }
+}

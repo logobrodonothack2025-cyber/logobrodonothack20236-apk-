@@ -1,0 +1,37 @@
+<svg viewBox="0 0 200 200" width="192" height="192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="100" cy="100" r="92" />
+    </clipPath>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="#000000" />
+  <g clipPath="url(#circle-clip)">
+    <rect width="200" height="200" fill="#000000" />
+    <g transform="rotate(-45 100 100)">
+      <rect x="-120" y="-120" width="440" height="14" fill="#ff7875" />
+      <rect x="-120" y="-101" width="440" height="14" fill="#6fe4f8" />
+      <rect x="-120" y="-82" width="440" height="14" fill="#fff066" />
+      <rect x="-120" y="-63" width="440" height="14" fill="#67e76d" />
+      <rect x="-120" y="-44" width="440" height="14" fill="#f578e8" />
+      <rect x="-120" y="-25" width="440" height="14" fill="#ff7875" />
+      <rect x="-120" y="-6" width="440" height="14" fill="#6fe4f8" />
+      <rect x="-120" y="13" width="440" height="14" fill="#fff066" />
+      <rect x="-120" y="32" width="440" height="14" fill="#67e76d" />
+      <rect x="-120" y="51" width="440" height="14" fill="#f578e8" />
+      <rect x="-120" y="70" width="440" height="14" fill="#ff7875" />
+      <rect x="-120" y="89" width="440" height="14" fill="#6fe4f8" />
+      <rect x="-120" y="108" width="440" height="14" fill="#fff066" />
+      <rect x="-120" y="127" width="440" height="14" fill="#67e76d" />
+      <rect x="-120" y="146" width="440" height="14" fill="#f578e8" />
+      <rect x="-120" y="165" width="440" height="14" fill="#ff7875" />
+      <rect x="-120" y="184" width="440" height="14" fill="#6fe4f8" />
+      <rect x="-120" y="203" width="440" height="14" fill="#fff066" />
+      <rect x="-120" y="222" width="440" height="14" fill="#67e76d" />
+      <rect x="-120" y="241" width="440" height="14" fill="#f578e8" />
+      <rect x="-120" y="260" width="440" height="14" fill="#ff7875" />
+      <rect x="-120" y="279" width="440" height="14" fill="#6fe4f8" />
+    </g>
+    <!-- Logobro mouth -->
+    <path d="M 50 126 Q 98 175 184 116 Q 120 184 50 126 Z" fill="#000000" stroke="#000000" stroke-width="3" />
+  </g>
+</svg>

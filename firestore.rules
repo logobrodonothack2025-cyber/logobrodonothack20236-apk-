@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    // Connection test document
+    match /test/connection {
+      allow read: if true;
+    }
+    
+    // User Profile
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false; // PII protection, no listing user accounts
+      allow create, update: if isOwner(userId)
+        && request.resource.data.uid == userId;
+      allow delete: if isOwner(userId);
+      
+      // User's custom Logobro characters
+      match /customLogobros/{logobroId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    // Public community showcase
+    match /publicLogobros/{logobroId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn()
+        && resource.data.userId == request.auth.uid;
+    }
+    
+    // Arcade leaderboard
+    match /leaderboard/{scoreId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn()
+        && resource.data.userId == request.auth.uid;
+    }
+  }
+}
